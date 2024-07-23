@@ -5,10 +5,16 @@
   background: var(--color-panel);
   height: 100vh;
   padding: var(--margin);
+
+  @media screen and (max-width: 500px) {
+    position: relative;
+    height: auto;
+  }
 }
 
 .content {
   height: 100vh;
+  overflow-y: scroll;
   padding: var(--margin);
 }
 
@@ -28,6 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--margin);
 }
 
 table {
@@ -47,6 +54,10 @@ table {
   align-items: center;
   justify-content: center;
   padding: var(--margin);
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .chartWrapper {
@@ -56,4 +67,8 @@ table {
   align-items: center;
   justify-content: center;
   margin-top: var(--margin);
+
+  @media screen and (max-width: 500px) {
+    height: 500px;
+  }
 }

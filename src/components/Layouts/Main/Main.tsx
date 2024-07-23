@@ -5,102 +5,108 @@ import {
   Button,
   ButtonGroup,
   TextField,
+  Select,
   FormControl,
 } from "book-ui";
 import classnames from "classnames";
 
 import styles from "./Main.module.scss";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LineChart,
+  Line,
 } from "recharts";
-
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { useMemo } from "react";
 
 export const MainLayout = () => {
   const classNameVal = classnames(styles.main);
+
+  const data = useMemo(() => {
+    const arr = [];
+
+    for (let i = 0; i < 50; i++) {
+      arr.push({
+        name: `Data ${i + 1}`,
+        value: Math.floor(Math.random() * 50) + 1,
+      });
+    }
+
+    return arr;
+  }, []);
+
+  const barData = useMemo(() => {
+    const arr = [];
+    const date = new Date();
+
+    for (let i = 0; i < 5; i++) {
+      arr.push({
+        name: date.toISOString(),
+        positive: Math.floor(Math.random() * 5) + 1,
+        negative: Math.floor(Math.random() * 5) + 1,
+        neutral: Math.floor(Math.random() * 5) + 1,
+        compound: -1,
+      });
+    }
+
+    return arr;
+  }, []);
 
   return (
     <div className={classNameVal}>
       {/*<GridRuler spacing="sm" />*/}
       <Grid container spacing="sm">
-        <Grid item md={2}>
+        <Grid item md={2} sm={12} xs={12}>
           <Box className={classnames(styles.sidebar)}>
             <ButtonGroup orientation="vertical">
               <Button className={classnames(styles.button)}>Analytics</Button>
-              <Button className={classnames(styles.button)}>Portfolio</Button>
-              <Button className={classnames(styles.button)}>Top Assets</Button>
+              <Button className={classnames(styles.button)} disabled>
+                Portfolio
+              </Button>
+              <Button className={classnames(styles.button)} disabled>
+                Top Assets
+              </Button>
 
-              <Button className={classnames(styles.button)}>
+              <Button className={classnames(styles.button)} disabled>
                 Gainers & Losers
               </Button>
             </ButtonGroup>
           </Box>
         </Grid>
-        <Grid item md={10}>
+        <Grid item md={10} sm={12} xs={12}>
           <Box className={classnames(styles.content)}>
             <Grid container spacing="sm">
-              <Grid item md={6}>
+              <Grid item md={3} sm={0} xs={0} />
+              <Grid item md={6} sm={12} xs={12}>
                 <Box className={classnames(styles.centerBetween)}>
-                  <Typography>Asset Class</Typography>
+                  <Typography>Company</Typography>
                   <FormControl>
-                    <TextField placeholder="Asset Class" variant="outlined" />
+                    <Select label="Relation" variant="outlined">
+                      <option value="amc">AMC</option>
+                      <option value="gamestop">GameStop</option>
+                      <option value="Cryptocurrency">Cryptocurrency</option>
+                      <option value="bitcoin">Bitcoin</option>
+                      <option value="ethereum">Ethereum</option>
+                    </Select>
                   </FormControl>
                 </Box>
                 <br />
                 <Box className={classnames(styles.centerBetween)}>
-                  <Typography>Ticker</Typography>
+                  <Typography>Time period</Typography>
                   <FormControl>
-                    <TextField placeholder="Ticker" variant="outlined" />
+                    <Select label="Time period" variant="outlined">
+                      <option value="1">1 Quarter</option>
+                      <option value="2">2 Quarters</option>
+                      <option value="4">4 Quarters</option>
+                      <option value="8">8 Quarters</option>
+                      <option value="12">12 Quarters</option>
+                    </Select>
                   </FormControl>
                 </Box>
                 <br />
@@ -111,54 +117,70 @@ export const MainLayout = () => {
                   <Button>Search</Button>
                 </Box>
               </Grid>
-              <Grid item md={6}>
-                <table>
-                  <tr>
-                    <th>Company</th>
-                    <th>Contact</th>
-                    <th>Country</th>
-                  </tr>
-                  <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                  </tr>
-                </table>
-              </Grid>
-              <Grid item md={12}>
+              <Grid item md={3} sm={0} xs={0} />
+              <Grid item md={12} sm={12} xs={12}>
                 <Box className={styles.chartContainerWrapper}>
-                  <Typography>Historical chart</Typography>
+                  <Typography>Fear and Greed index chart</Typography>
                   <Box className={styles.chartWrapper}>
                     <ResponsiveContainer width="100%" height="100%">
+                      {/*// BarChart*/}
                       <LineChart
                         width={500}
                         height={300}
                         data={data}
                         margin={{
                           top: 5,
-                          right: 30,
-                          left: 20,
+                          right: 0,
+                          left: 0,
                           bottom: 5,
                         }}
                       >
-                        <CartesianGrid strokeDasharray="3 3" />
+                        <CartesianGrid strokeDasharray="10 10" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
                         <Line
                           type="monotone"
-                          dataKey="pv"
-                          stroke="#8884d8"
-                          activeDot={{ r: 8 }}
+                          dataKey="value"
+                          stroke="var(--color-warning-light)"
                         />
-                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                        {/*<Bar*/}
+                        {/*  dataKey="value"*/}
+                        {/*  fill={"var(--color-primary-light)"}*/}
+                        {/*/>*/}
                       </LineChart>
+                    </ResponsiveContainer>
+                  </Box>
+                </Box>
+                <Box className={styles.chartContainerWrapper}>
+                  <Typography>Sentiment scores chart</Typography>
+                  <Box className={styles.chartWrapper}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        width={500}
+                        height={300}
+                        data={barData}
+                        margin={{
+                          top: 5,
+                          right: 0,
+                          left: 0,
+                          bottom: 5,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="10 10" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        {/*<Tooltip />*/}
+                        <Legend />
+                        <Bar dataKey="positive" fill={"var(--color-success)"} />
+                        <Bar dataKey="negative" fill={"var(--color-error)"} />
+                        <Bar dataKey="neutral" fill={"#c9c9c9"} />
+                        <Bar
+                          dataKey="compound"
+                          fill={"var(--color-primary-light)"}
+                        />
+                      </BarChart>
                     </ResponsiveContainer>
                   </Box>
                 </Box>
