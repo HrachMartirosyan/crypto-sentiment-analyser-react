@@ -5,6 +5,9 @@
   background: var(--color-panel);
   height: 100vh;
   padding: var(--margin);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media screen and (max-width: 500px) {
     position: relative;
@@ -16,59 +19,4 @@
   height: 100vh;
   overflow-y: scroll;
   padding: var(--margin);
-}
-
-.flex {
-  display: flex;
-}
-
-.verticalCenter {
-  align-items: center;
-}
-
-.spaceBetween {
-  justify-content: space-between;
-}
-
-.centerBetween {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--margin);
-}
-
-table {
-  width: 100%;
-  color: var(--color-text);
-
-  th,
-  td {
-    border: 1px solid var(--color-primary);
-    padding: var(--margin-xs);
-  }
-}
-
-.chartContainerWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--margin);
-
-  @media screen and (max-width: 500px) {
-    padding: 0;
-  }
-}
-
-.chartWrapper {
-  width: 100%;
-  height: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--margin);
-
-  @media screen and (max-width: 500px) {
-    height: 500px;
-  }
 }
