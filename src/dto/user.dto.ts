@@ -3,3 +3,8 @@ export type UserDto = {
   username: string;
   email: string;
 };
+
+export type AuthUserDto = {
+  jwt: string;
+  user: UserDto;
+};

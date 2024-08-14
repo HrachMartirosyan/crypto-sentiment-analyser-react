@@ -14,8 +14,8 @@ export const AuthLayout: FC<Props> = ({ children }) => {
 
   return (
     <Grid container>
-      <Grid md={5} />
-      <Grid md={2}>
+      <Grid md={4} />
+      <Grid xs={12} sm={6} md={4}>
         <Box className={classNameVal}>{children}</Box>
       </Grid>
     </Grid>

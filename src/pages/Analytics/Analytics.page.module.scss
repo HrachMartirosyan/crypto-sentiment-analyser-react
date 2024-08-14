@@ -10,11 +10,28 @@
   justify-content: space-between;
 }
 
+.buttonGroupWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .centerBetween {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--margin);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.flexColumn {
+  flex-direction: column;
 }
 
 table {
@@ -50,5 +67,12 @@ table {
 
   @media screen and (max-width: 500px) {
     height: 500px;
+    padding-bottom: 200px;
+  }
+}
+
+.mobileText {
+  @media screen and (max-width: 500px) {
+    text-align: justify;
   }
 }

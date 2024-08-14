@@ -17,34 +17,31 @@ import {
 
 import styles from "./SignIn.page.module.scss";
 import { AuthLayout } from "../../components/Layouts";
-import { useUserQuery, useAuthUserMutation } from "../../tanstack";
+import { useUserQuery, useSignInMutation } from "../../tanstack";
 import { Loading } from "../../components/Feedback";
 import { SignInDto } from "../../dto/auth.dto.ts";
 import { AxiosError } from "axios";
 import { ErrorResponse } from "../../dto/api.dto.ts";
 
 const SignInSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
+  email: Yup.string().email("Please write an email").required("Required"),
   password: Yup.string()
-    .min(8, "Too Short!")
-    .max(20, "Too Long!")
+    .min(8, "Password is too short (min 8 chars)")
+    .max(20, "Password is too long (max 20 chars)")
     .required("Required"),
 });
 
 export const SignInPage = () => {
   const { isLoading, data: user } = useUserQuery();
-  const authUser = useAuthUserMutation();
-  const signInError = (authUser?.error as AxiosError<ErrorResponse>)?.response
-    ?.data;
+  const signInUserMutation = useSignInMutation();
+  const signInError = (signInUserMutation?.error as AxiosError<ErrorResponse>)
+    ?.response?.data;
 
   const onSignIn = useCallback(
     (values: SignInDto) => {
-      authUser.mutate(values);
+      signInUserMutation.mutate(values);
     },
-    [authUser],
+    [signInUserMutation],
   );
 
   if (isLoading) {
@@ -61,7 +58,7 @@ export const SignInPage = () => {
         <CardHeader title="Sign In" />
         <CardContent>
           <Formik
-            initialValues={{ username: "", password: "" }}
+            initialValues={{ email: "", password: "" }}
             validationSchema={SignInSchema}
             onSubmit={onSignIn}
           >
@@ -70,12 +67,10 @@ export const SignInPage = () => {
                 <Box className={styles.inputSpace}>
                   <TextField
                     variant="outlined"
-                    placeholder="Username"
-                    value={values.username}
-                    onChange={(e) => setFieldValue("username", e.target.value)}
-                    error={
-                      touched.username && errors.username ? errors.username : ""
-                    }
+                    placeholder="Email"
+                    value={values.email}
+                    onChange={(e) => setFieldValue("email", e.target.value)}
+                    error={touched.email && errors.email ? errors.email : ""}
                     required
                   />
                   <TextField
@@ -94,7 +89,7 @@ export const SignInPage = () => {
                       {signInError.message}
                     </Typography>
                   )}
-                  <Button type="submit" loading={authUser.isPending}>
+                  <Button type="submit" loading={signInUserMutation.isPending}>
                     Sign In
                   </Button>
                 </Box>

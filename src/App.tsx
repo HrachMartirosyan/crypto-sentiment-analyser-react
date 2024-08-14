@@ -1,10 +1,10 @@
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { BaseProvider } from "book-ui";
 
-import { RootPage } from "./pages/root.page.tsx";
-import { ErrorPage } from "./pages/error.page.tsx";
-import { AnalyticsPage } from "./pages/Analytics/analytics.page.tsx";
-import { HelpPage } from "./pages/help.page.tsx";
+import { RootPage } from "./pages/Root.page.tsx";
+import { ErrorPage } from "./pages/Error/Error.page.tsx";
+import { AnalyticsPage } from "./pages/Analytics/Analytics.page.tsx";
+import { HelpPage } from "./pages/Help/Help.page.tsx";
 import { SignInPage } from "./pages/SignIn/SignIn.page.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./tanstack";
@@ -19,7 +19,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "analytics",
+        element: <AnalyticsPage />,
+      },
+      {
+        path: "analytics/:companyId",
         element: <AnalyticsPage />,
       },
       {
@@ -44,7 +48,7 @@ function App() {
       <CookiesProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
-          {/*<ReactQueryDevtools initialIsOpen={false} />*/}
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </CookiesProvider>
     </BaseProvider>
