@@ -18,7 +18,7 @@ import styles from "./SignUp.page.module.scss";
 import { AuthLayout } from "../../components/Layouts";
 import { useSignUpMutation, useUserQuery } from "../../tanstack";
 import { Loading } from "../../components/Feedback";
-import { useCallback } from "react";
+import { ChangeEvent, useCallback } from "react";
 import { AxiosError } from "axios";
 import { ErrorResponse } from "../../dto/api.dto.ts";
 import { SignUpDto } from "../../dto/auth.dto.ts";
@@ -82,7 +82,9 @@ export const SignUpPage = () => {
                     variant="outlined"
                     placeholder="Username"
                     value={values.username}
-                    onChange={(e) => setFieldValue("username", e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFieldValue("username", e.target.value)
+                    }
                     error={
                       touched.username && errors.username ? errors.username : ""
                     }
@@ -92,7 +94,9 @@ export const SignUpPage = () => {
                     variant="outlined"
                     placeholder="Email"
                     value={values.email}
-                    onChange={(e) => setFieldValue("email", e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFieldValue("email", e.target.value)
+                    }
                     error={touched.email && errors.email ? errors.email : ""}
                     required
                   />
@@ -101,7 +105,9 @@ export const SignUpPage = () => {
                     placeholder="Password"
                     type="password"
                     value={values.password}
-                    onChange={(e) => setFieldValue("password", e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFieldValue("password", e.target.value)
+                    }
                     error={
                       touched.password && errors.password ? errors.password : ""
                     }
@@ -112,7 +118,7 @@ export const SignUpPage = () => {
                     placeholder="Repeat Password"
                     type="password"
                     value={values.repeatPassword}
-                    onChange={(e) =>
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFieldValue("repeatPassword", e.target.value)
                     }
                     error={

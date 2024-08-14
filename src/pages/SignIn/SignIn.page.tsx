@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { ChangeEvent, useCallback } from "react";
 import { Navigate } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -69,7 +69,9 @@ export const SignInPage = () => {
                     variant="outlined"
                     placeholder="Email"
                     value={values.email}
-                    onChange={(e) => setFieldValue("email", e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFieldValue("email", e.target.value)
+                    }
                     error={touched.email && errors.email ? errors.email : ""}
                     required
                   />
@@ -78,7 +80,9 @@ export const SignInPage = () => {
                     placeholder="Password"
                     type="password"
                     value={values.password}
-                    onChange={(e) => setFieldValue("password", e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFieldValue("password", e.target.value)
+                    }
                     error={
                       touched.password && errors.password ? errors.password : ""
                     }
