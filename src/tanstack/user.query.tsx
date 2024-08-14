@@ -3,13 +3,13 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { queryClient, queryKeys } from "./client.tanstack.tsx";
 import { getUser_api } from "../api/user.api.tsx";
+import { hasUserToken } from "../utils/cookie.util.tsx";
 
 export const useUserQuery = () => {
   return useQuery({
     queryKey: [queryKeys.GET_USER],
     queryFn: async () => {
-      const cookies = cookie.parse(document.cookie);
-      if (!cookies.userToken) {
+      if (!hasUserToken()) {
         return null;
       }
       return getUser_api();
