@@ -13,3 +13,26 @@ instance.interceptors.request.use((config) => {
   }
   return config;
 });
+
+instance.interceptors.response.use(
+  (response) => {
+    if (response.status === 401) {
+      document.cookie = cookie.serialize("userToken", "some.token", {
+        expires: new Date(Date.now() - 1000),
+      });
+      window.location.replace("/sign-in");
+    }
+    return response;
+  },
+  (error) => {
+    if (error?.response?.status === 401) {
+      document.cookie = cookie.serialize("userToken", "some.token", {
+        expires: new Date(Date.now() - 1000),
+      });
+      window.location.replace("/sign-in");
+      return Promise.reject(error.response?.data?.message || "Unauthorized");
+    }
+
+    return Promise.reject(error);
+  },
+);
