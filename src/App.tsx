@@ -4,13 +4,14 @@ import { BaseProvider } from "book-ui";
 import { RootPage } from "./pages/Root.page.tsx";
 import { ErrorPage } from "./pages/Error/Error.page.tsx";
 import { AnalyticsPage } from "./pages/Analytics/Analytics.page.tsx";
-import { HelpPage } from "./pages/Help/Help.page.tsx";
+import { AboutPage } from "./pages/About/About.page.tsx";
 import { SignInPage } from "./pages/SignIn/SignIn.page.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./tanstack";
 import { CookiesProvider } from "react-cookie";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SignUpPage } from "./pages/SignUp/SignUp.page.tsx";
+import { InformationPage } from "./pages/Information/Information.page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <AnalyticsPage />,
       },
       {
-        path: "/help",
-        element: <HelpPage />,
+        path: "/information",
+        element: <InformationPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
       },
     ],
   },

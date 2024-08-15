@@ -5,7 +5,6 @@ export type SentimentChart = {
   positive?: number;
   negative?: number;
   neutral?: number;
-  compound?: number;
 };
 
 export function normalizeSentimentChart(
@@ -15,40 +14,20 @@ export function normalizeSentimentChart(
     return [];
   }
 
-  const normalized: SentimentChart[] = [];
-  const dataBySentiment: Record<string, SentimentChartResponseDto[]> = {};
+  const dataByQuarter: Record<string, SentimentChart> = {};
 
   for (const item of data) {
-    if (!dataBySentiment[item.sentiment]) {
-      dataBySentiment[item.sentiment] = [item];
+    if (!dataByQuarter[item.quarter]) {
+      dataByQuarter[item.quarter] = {
+        name: item.quarter,
+        [item.sentiment]: item.value,
+      };
     } else {
-      dataBySentiment[item.sentiment].push(item);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      dataByQuarter[item.quarter][item.sentiment] = item.value;
     }
   }
 
-  while (
-    dataBySentiment["positive"].length ||
-    dataBySentiment["negative"].length ||
-    dataBySentiment["neutral"].length ||
-    dataBySentiment["compound"].length
-  ) {
-    const current: SentimentChart = {};
-    for (const sentiment in dataBySentiment) {
-      const value = dataBySentiment[sentiment];
-      if (value?.length) {
-        const first = value.pop();
-        if (first) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          current[sentiment] = first.value;
-        }
-      }
-    }
-    normalized.push(current);
-  }
-
-  return normalized.map((item, index) => {
-    item.name = new Date(Date.now() + index * 60000).toLocaleDateString();
-    return item;
-  }) as unknown as SentimentChart[];
+  return Object.values(dataByQuarter);
 }

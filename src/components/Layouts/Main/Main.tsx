@@ -26,8 +26,11 @@ export const MainLayout: FC<Props> = ({ children }) => {
             <Button href="/" className={classnames(styles.button)}>
               Analytics
             </Button>
-            <Button href="/help" className={classnames(styles.button)}>
-              Help
+            <Button href="/information" className={classnames(styles.button)}>
+              Information
+            </Button>
+            <Button href="/about" className={classnames(styles.button)}>
+              About
             </Button>
           </ButtonGroup>
           <Button variant="text" onClick={onLogout}>

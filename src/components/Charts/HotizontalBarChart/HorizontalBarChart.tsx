@@ -7,6 +7,7 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
+  Tooltip,
 } from "recharts";
 
 import { SentimentChart } from "../../../utils/chart.util.tsx";
@@ -35,10 +36,17 @@ export const HorizontalBarChart: FC<Props> = ({ data }) => {
         <XAxis type="number" />
         <YAxis type="category" dataKey="name" width={150} />
         <Legend />
+        <Tooltip
+          contentStyle={{
+            background: "var(--color-primary)",
+            border: "none",
+            color: "var(--color-text)",
+          }}
+        />
         <Bar dataKey="positive" fill={"var(--color-success)"} />
         <Bar dataKey="negative" fill={"var(--color-error)"} />
         <Bar dataKey="neutral" fill={"#c9c9c9"} />
-        <Bar dataKey="compound" fill={"var(--color-primary-light)"} />
+        {/*<Bar dataKey="compound" fill={"var(--color-primary-light)"} />*/}
       </BarChart>
     </ResponsiveContainer>
   );
