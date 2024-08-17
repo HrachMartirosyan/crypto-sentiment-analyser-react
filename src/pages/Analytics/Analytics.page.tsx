@@ -114,9 +114,7 @@ export const AnalyticsPage = () => {
           <></>
         )}
       </Box>
-      <Grid item md={12} />
-
-      <Grid item md={6}>
+      <Grid item md={12}>
         <br />
         <Box className={styles.center}>
           <Image
@@ -127,7 +125,7 @@ export const AnalyticsPage = () => {
           />
         </Box>
       </Grid>
-      <Grid item md={6}>
+      <Grid item md={12}>
         <br />
         <Box className={classnames(styles.center, styles.flexColumn)}>
           <Typography component="h3" variant="h3">
@@ -180,7 +178,7 @@ export const AnalyticsPage = () => {
       </Grid>
       <Grid item md={12} sm={12} xs={12}>
         <Box className={styles.chartContainerWrapper}>
-          <Typography>Sentiment scores chart</Typography>
+          {/*<Typography>Sentiment scores chart</Typography>*/}
           <Box className={styles.chartWrapper}>
             <HorizontalBarChart data={barData} />
           </Box>

@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className={classnames(styles.main)}>
       <Typography>
-        Copyright &copy; 2022
+        Copyright &copy; 2024
         <br />
         <br />
         Except as permitted by the copyright law applicable to you, you may not

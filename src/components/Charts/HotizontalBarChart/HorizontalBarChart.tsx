@@ -18,7 +18,11 @@ type Props = {
 
 export const HorizontalBarChart: FC<Props> = ({ data }) => {
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     <ResponsiveContainer width="100%" height="100%">
+      <br />
+      <br />
       <BarChart
         width={500}
         height={300}
@@ -35,7 +39,7 @@ export const HorizontalBarChart: FC<Props> = ({ data }) => {
         <CartesianGrid strokeDasharray="10 10" />
         <XAxis type="number" />
         <YAxis type="category" dataKey="name" width={150} />
-        <Legend />
+        <Legend wrapperStyle={{ top: -40, left: 0 }} />
         <Tooltip
           contentStyle={{
             background: "var(--color-primary)",
