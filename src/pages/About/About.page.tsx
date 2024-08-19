@@ -83,6 +83,8 @@ export const AboutPage = () => {
         that there are insufficient negative sentiment content or comments to
         allow price prediction.
       </Typography>
+      <br />
+      <br />
     </>
   );
 };

@@ -12,6 +12,7 @@ import { CookiesProvider } from "react-cookie";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SignUpPage } from "./pages/SignUp/SignUp.page.tsx";
 import { InformationPage } from "./pages/Information/Information.page.tsx";
+import { AccessibilityPage } from "./pages/Accessibility/Accessibility.page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/accessibility",
+        element: <AccessibilityPage />,
       },
     ],
   },

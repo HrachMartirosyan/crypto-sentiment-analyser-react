@@ -33,6 +33,9 @@ export const MainLayout: FC<Props> = ({ children }) => {
             <Button href="/about" className={classnames(styles.button)}>
               About Sentiment Analysis
             </Button>
+            <Button href="/accessibility" className={classnames(styles.button)}>
+              Accessibility
+            </Button>
           </ButtonGroup>
           <Button variant="text" onClick={onLogout}>
             Logout
