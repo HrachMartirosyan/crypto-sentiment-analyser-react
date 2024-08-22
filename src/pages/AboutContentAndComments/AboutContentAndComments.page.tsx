@@ -1,10 +1,10 @@
 import { Typography } from "book-ui";
 
-export const AboutPage = () => {
+export const AboutContentAndCommentsPage = () => {
   return (
     <>
       <Typography component="h1" variant="h3">
-        About
+        About Content & Comments
       </Typography>
       <br />
 

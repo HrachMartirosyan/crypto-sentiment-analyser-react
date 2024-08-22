@@ -30,7 +30,7 @@ export const AccessibilityPage = () => {
         <br />
         <br />
         There are a number of legacy documents and forms that may not be
-        accessible for some users; these are mainly in PDF and Word format.
+        accessible for some users;
         <br />
         <br />
         These issues are being progressively resolved by replacing the majority
@@ -39,8 +39,15 @@ export const AccessibilityPage = () => {
         <br />
         <br />
         If you are having trouble accessing pages or content on the website,
-        please email us at ----- and we will strive to ensure you receive the
-        information you need within 48 hours.
+        please email us at{" "}
+        <a
+          href="mailto:help@cyptoanalyser.info"
+          style={{ color: "var(--color-primary-light)" }}
+        >
+          help@cyptoanalyser.info
+        </a>{" "}
+        and we will strive to ensure you receive the information you need within
+        48 hours.
       </Typography>
       <br />
       <Typography component="h2" variant="h4">

@@ -1,25 +1,12 @@
 import { Typography } from "book-ui";
 
-export const InformationPage = () => {
-  // const [activeTab, setActiveTab] = useState<"content" | "comments">("content");
-
+export const AboutSentimentAnalysisPage = () => {
   return (
     <>
       <Typography component="h1" variant="h3">
-        Information
+        About Sentiment Analysis
       </Typography>
       <br />
-
-      {/*<br />*/}
-      {/*<ButtonGroup>*/}
-      {/*  <Button onClick={() => setActiveTab("content")}>Content</Button>*/}
-      {/*  <Button onClick={() => setActiveTab("comments")}>Comments</Button>*/}
-      {/*</ButtonGroup>*/}
-      {/*<br />*/}
-
-      {/*{activeTab === "content" && <Typography>Info about Content</Typography>}/*/}
-      {/*{activeTab === "comments" && <Typography>Info about Comments</Typography>}*/}
-
       <Typography>
         ‘Content’, also referred to as “Post’, refers to the original content
         topic, which then elicits a number of “Comments’
