@@ -162,7 +162,7 @@ export const AnalyticsPage = () => {
           <Typography>VADER/Lexicon</Typography>
           <FormControl>
             <Select
-              label="Type"
+              label="VADER/Lexicon"
               variant="outlined"
               value={analysisModel}
               onChange={onAnalysisTypeChange}
