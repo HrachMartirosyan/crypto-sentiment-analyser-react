@@ -28,16 +28,16 @@ export const MainLayout: FC<Props> = ({ children }) => {
               Analytics
             </Button>
             <Button
-              href="/about-content-and-comments"
+              href="/content-and-comments"
               className={classnames(styles.button)}
             >
-              About Content & Comments
+              Content & Comments
             </Button>
             <Button
-              href="/about-sentiment-analysis"
+              href="/sentiment-analysis"
               className={classnames(styles.button)}
             >
-              About Sentiment Analysis
+              Sentiment Analysis
             </Button>
             <Button href="/accessibility" className={classnames(styles.button)}>
               Accessibility

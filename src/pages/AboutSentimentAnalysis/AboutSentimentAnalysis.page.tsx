@@ -4,7 +4,7 @@ export const AboutSentimentAnalysisPage = () => {
   return (
     <>
       <Typography component="h1" variant="h3">
-        About Sentiment Analysis
+        Sentiment Analysis
       </Typography>
       <br />
       <Typography>

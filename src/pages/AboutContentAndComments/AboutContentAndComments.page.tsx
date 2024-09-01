@@ -4,7 +4,7 @@ export const AboutContentAndCommentsPage = () => {
   return (
     <>
       <Typography component="h1" variant="h3">
-        About Content & Comments
+        Content & Comments
       </Typography>
       <br />
 

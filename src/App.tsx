@@ -29,11 +29,11 @@ const router = createBrowserRouter([
         element: <AnalyticsPage />,
       },
       {
-        path: "/about-sentiment-analysis",
+        path: "/sentiment-analysis",
         element: <AboutSentimentAnalysisPage />,
       },
       {
-        path: "/about-content-and-comments",
+        path: "/content-and-comments",
         element: <AboutContentAndCommentsPage />,
       },
       {
